@@ -98,7 +98,7 @@ variable "green_perim_subnets" {
     },
     {
       function                = "perimeter"
-      name                    = "ddbcorp.poc.perimeter.a"
+      name                    = "ddbcorp.poc.perimeter.b"
       availability_zone       = "us-east-1b"
       cidr_block              = "10.0.1.32/28"
       map_public_ip_on_launch = "FALSE"
@@ -117,7 +117,7 @@ variable "green_pres_subnets" {
     },
     {
       function                = "presentation"
-      name                    = "ddbcorp.poc.presentation.a"
+      name                    = "ddbcorp.poc.presentation.b"
       availability_zone       = "us-east-1b"
       cidr_block              = "10.0.3.0/24"
       map_public_ip_on_launch = "FALSE"
