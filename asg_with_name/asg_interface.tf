@@ -1,9 +1,7 @@
-variable "myASGSize" {
+variable "myASGProperties" {
 	type = "map"
 }
-variable "myHealthCheckType" {
-	type = "string"
-}
+
 variable "myEC2Tags" {
 	type = "map"
 }

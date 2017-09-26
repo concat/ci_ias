@@ -1,14 +1,14 @@
 resource "aws_autoscaling_group" "asg" {
 	provider =  "aws.primary"
-	#count = "${var.myASGQty}" 
+	name = "${var.myASGProperties["asg_base_name"]}${var.myASGColor}"
 	vpc_zone_identifier = [ "${var.mySubnetIds}" ]
 	target_group_arns = [ "${var.myTGARNs}" ]
 
-	health_check_type = "${var.myHealthCheckType}"
+	health_check_type = "${var.myASGProperties["health_check_type"]}"
 	launch_configuration = "${var.myLCId}"
-	max_size = "${lookup(var.myASGSize, "max_size")}"
-	desired_capacity = "${lookup(var.myASGSize, "desired_capacity")}"
-	min_size = "${lookup(var.myASGSize, "min_size")}"
+	max_size = "${var.myASGProperties["max_size"]}"
+	desired_capacity = "${var.myASGProperties["desired_capacity"]}"
+	min_size = "${var.myASGProperties["min_size"]}"
 	
     tag {
 		key = "TierBundle"
