@@ -48,8 +48,8 @@ yum install epel-release -y
 yum install awscli -y
 yum install ansible -y
 yum install git -y
-ansible-pull -U https://github.com/concat/ansible-playbooks --full -i localhost, codeigniter-base.yml
-ansible-pull -U https://github.com/concat/ansible-playbooks --full -i localhost, ci_apps.yml
+ansible-pull -U https://github.com/concat/ansible-playbooks --full codeigniter-base.yml
+ansible-pull -U https://github.com/concat/ansible-playbooks --full ci_apps.yml
 HEREDOC
 
 #	iam_instance_profile = "${var.myIAMCodeDeployId}"

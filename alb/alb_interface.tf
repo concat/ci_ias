@@ -1,7 +1,6 @@
-#variable "myALBNamePrefix" {}
-variable "myALBInternalFlag" {}
-variable "myALBName" {}
-variable "myALBTargetGroupName" {}
+variable "myALBProperties" {
+  type = "map"
+}
 variable "mySubnetIds" {
 	type = "list"
 }

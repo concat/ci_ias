@@ -118,11 +118,9 @@ module "web_launch_config" {
 # ALB shared across Green and Blue
 module "web_green_alb" {
 	source = "./alb"
+	myALBProperties = "${var.web-green-alb-properties}"
 	mySubnetIds = [ "${module.green_perim_subnets.subnet_ids[0]}", "${module.green_perim_subnets.subnet_ids[1]}" ]
-	myALBName = "${var.web-green-alb-name}"
 	mySGIds = [ "${module.web_sg.sg_id}" ]
-	myALBInternalFlag = false
-	myALBTargetGroupName = "DDBCorp-Web-ALB"
 	myVPCId = "${module.vpc.vpc_id}" 
 }
 
@@ -136,9 +134,8 @@ module "app-domain-records" {
 }
 
 module "green_web_asg" {
-	source = "./asg"
-	myASGSize = "${var.web_asg_size}"
-	myHealthCheckType = "${var.web_asg_health_check_type}"
+	source = "./asg_with_name"
+	myASGProperties = "${var.web_asg_properties}"
 	myASGColor = "Green"
 	myEC2Tags = "${var.web_ec2_tags}"
 	myLCId = "${module.web_launch_config.lc_id}"

@@ -227,12 +227,16 @@ variable "data_nacl_egress_rules" {
 
 # Web Tier Configuration
 # ALB VARIABLES
-variable "web-green-alb-name" {
-  default = "DDBCorp-Web-Green-ALB"
-}
-
-variable "app-alb-name" {
-  default = "DDBCorp-CI-App1"
+variable "web-green-alb-properties" {
+  type = "map"
+  default = {
+    albname = "DDBCorp-Web-Green-ALB"
+    healthcheckpath = "/xyz/index.php/"
+    targetgroupname = "DDBCorp-Web-ALB"
+    targetgroupport = 80
+    targetgroupprotocol = "HTTP"
+    internalLB = false
+  }
 }
 
 # #Launch Configuration VARIABLES
@@ -267,17 +271,15 @@ variable "keypair" {
   default = "Beckstep1-East-Keypair"
 }
 
-variable "web_asg_size" {
+variable "web_asg_properties" {
   type = "map"
   default = {
     max_size = 1
     desired_capacity = 1
     min_size = 1
+    health_check_type = "ELB"
+    asg_base_name = "DDBCorpWebASG"
   }
-}
-
-variable "web_asg_health_check_type" {
-  default = "ELB"
 }
 
 variable "rds_properties" {
