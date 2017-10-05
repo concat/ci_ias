@@ -51,8 +51,8 @@ variable "s3bucket" {
   default = {
     "region" = "us-east-1"
     "name" = "ddbcorputil"
+    "isVersioned" = true
   }
-
 }
 
 variable "gnw-igw-name" {

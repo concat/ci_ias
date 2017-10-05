@@ -5,6 +5,6 @@ resource "aws_s3_bucket" "myBucket" {
   region = "${var.myBucketProperties["region"]}"
 
   versioning {
-    enabled = true
+    enabled = "${var.myBucketProperties["isVersioned"]}"
   }
 }
