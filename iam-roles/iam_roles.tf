@@ -60,7 +60,16 @@ resource "aws_iam_role_policy" "ec2access2s3" {
          ],
          "Effect": "Allow",
          "Resource": "arn:aws:ssm:us-east-1:${var.myAWSAccountNumber}:parameter/${var.mySMParameterStorePath}*"
-        }
+      },
+      {
+        "Action": [
+           "autoscaling:DescribeAutoScalingGroups",
+           "autoscaling:DescribeAutoScalingInstances",
+           "ec2:DescribeInstances"
+        ],
+        "Effect": "Allow",
+        "Resource": "*"
+      }
    ]
 }
 ANOTHER
